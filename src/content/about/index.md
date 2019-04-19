@@ -5,15 +5,13 @@ skills:
   - JavaScript
   - HTML & SCSS
   - React
-  - Vue
+  - Angular
   - Node.js
   - Express
   - GraphQL
-  - NativeScript
+  - TypeScript
 ---
 
-Hello! I'm Brittany, a software engineer based in Boston, MA who enjoys building things that live on the internet. I develop exceptional websites and web apps that provide intuitive, pixel-perfect user interfaces with efficient and modern backends.
+I'm Chi - a Technical Architect who is very strong in software development with 9 years experience. If you want to get perfect quality result for your products, I will be a good fit for you.
 
-Shortly after graduating from [Northeastern University](https://www.ccis.northeastern.edu/), I joined the engineering team at [Upstatement](https://www.upstatement.com/) where I work on a wide variety of interesting and meaningful projects on a daily basis.
-
-Here's a few technologies I've been working with recently:
+Currently, I’m spending my free time to research new technologies such as GraphQl, Machine Learning, Blockchain etc. I’m always eager to learn new things.

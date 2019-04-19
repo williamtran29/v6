@@ -1,37 +1,29 @@
 module.exports = {
-  siteTitle: 'Brittany Chiang | Software Engineer',
+  siteTitle: 'Chi | Software Engineer',
   siteDescription:
-    'Brittany Chiang is a software engineer based in Boston, MA who specializes in developing (and occasionally designing) exceptional, high-quality websites and applications.',
+    'I am Chi - a Technical Architect who is very strong in software development with 9 years experience. If you want to get perfect quality result for your products, I will be a good fit for you.',
   siteKeywords:
-    'Brittany Chiang, Brittany, Chiang, bchiang7, software engineer, front-end engineer, web developer, javascript, northeastern',
-  siteUrl: 'https://brittanychiang.com',
+    'Chi Tran, Chi, Tran, software engineer, front-end engineer, web developer, javascript, asia',
+  siteUrl: 'https://reactioncommerce.app',
   siteLanguage: 'en_US',
 
   googleVerification: 'DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk',
 
-  name: 'Brittany Chiang',
-  location: 'Boston, MA',
-  email: 'brittany.chiang@gmail.com',
+  name: 'Chi Tran',
+  location: 'Hue, Vietnam',
+  email: 'chitran.whitecat@gmail.com',
   socialMedia: [
     {
       name: 'Github',
-      url: 'https://github.com/bchiang7/',
+      url: 'https://github.com/williamtran29/',
     },
     {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/bchiang7/',
-    },
-    {
-      name: 'Codepen',
-      url: 'https://codepen.io/bchiang7/',
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/bchiang7/',
+      url: 'https://www.linkedin.com/in/chitran29/',
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com/bchiang7',
+      url: 'https://twitter.com/chitranpuppy',
     },
   ],
 
@@ -54,7 +46,7 @@ module.exports = {
     },
   ],
 
-  twitterHandle: '@bchiang7',
+  twitterHandle: '@chitranpuppy',
   googleAnalyticsID: 'UA-45666519-2',
 
   navHeight: 100,
