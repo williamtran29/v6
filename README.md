@@ -2,14 +2,6 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/af18a6c9-0bfc-4fed-bb80-5bd6f8bfcf1c/deploy-status)](https://app.netlify.com/sites/dreamy-turing-d2898a/deploys)
 
-The fourth iteration of my personal site built with [Gatsby](https://www.gatsbyjs.org/) and hosted with [Netlify](https://www.netlify.com/).
-
-> 📢 **PSA for those who want to fork or copy this repo and use it for their own site:**
->
-> Please be a decent person and give me proper credit by linking back to my website! Refer to this handy [quora post](https://www.quora.com/Is-it-bad-to-copy-other-peoples-code) if you're not sure.
-
-👀 [Looking for v3?](https://bchiang7.github.io/)
-
 ## 🚀 Quick Start
 
 1. **Install the Gatsby CLI**
