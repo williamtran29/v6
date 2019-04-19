@@ -1,8 +1,8 @@
 ---
 title: 'Hi, my name is'
-name: 'Brittany Chiang'
-subtitle: 'I build things for the web.'
+name: 'Chi Tran'
+subtitle: 'I am a Product Designer & FullStack Developer'
 contactText: 'Get In Touch'
 ---
 
-I'm a software engineer based in Boston, MA specializing in building (and occasionally designing) exceptional, high-quality websites and applications.
+I love the beautiful and reliable code so well-structured, testings (unit, automation, etc) are always included.
