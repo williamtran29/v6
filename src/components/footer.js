@@ -18,7 +18,7 @@ const FooterContainer = styled.footer`
   ${mixins.flexCenter};
   flex-direction: column;
   padding: 15px;
-  background-color: ${colors.darkNavy};
+  background-color: 'white';
   color: ${colors.slate};
   text-align: center;
   height: auto;
@@ -99,7 +99,7 @@ const Footer = ({ githubInfo }) => (
     </SocialContainer>
     <Copy>
       <GithubLink
-        href="https://github.com/bchiang7/v4"
+        href="https://github.com/williamtran29/v6"
         target="_blank"
         rel="nofollow noopener noreferrer">
         {githubInfo.stars && githubInfo.forks && (

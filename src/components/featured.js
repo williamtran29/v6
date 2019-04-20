@@ -46,8 +46,8 @@ const ProjectName = styled.h5`
   }
 `;
 const ProjectDescription = styled.div`
-  background-color: ${colors.lightNavy};
-  color: ${colors.lightSlate};
+  background-color: 'white';
+  color: ${colors.navy};
   padding: 25px;
   border-radius: ${theme.borderRadius};
   font-size: ${fontSizes.large};
