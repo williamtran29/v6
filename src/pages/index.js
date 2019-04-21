@@ -23,7 +23,7 @@ const IndexPage = ({ data, location }) => (
     <MainContainer id="content">
       <Hero data={data.hero.edges} />
       <About data={data.about.edges} />
-      <Jobs data={data.jobs.edges} />
+      <Jobs data={data.jobs.jobs} />
       <Featured data={data.featured.edges} />
       <Projects data={data.projects.edges} />
       <Contact data={data.contact.edges} />
@@ -71,21 +71,19 @@ export const query = graphql`
         }
       }
     }
-    jobs: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/jobs/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            company
-            location
-            range
-            url
-          }
-          html
+    jobs: graphCmsData {
+      jobs(where: { status: PUBLISHED }) {
+        title
+        company
+        companyLogo {
+          id
+          fileName
         }
+        location
+        description
+        dateStart
+        dateEnd
+        url
       }
     }
     featured: allMarkdownRemark(

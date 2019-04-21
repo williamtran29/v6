@@ -61,5 +61,16 @@ module.exports = {
         trackingId: config.googleAnalyticsID,
       },
     },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        // This type will contain remote schema Query type
+        typeName: 'GRAPHCMS',
+        // This is field under which it's accessible
+        fieldName: 'graphCmsData',
+        // Url to query from
+        url: 'https://api-uswest.graphcms.com/v1/cjup1i9ha36zw01faty1y8b7v/master',
+      },
+    },
   ],
 };
