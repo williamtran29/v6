@@ -46,7 +46,7 @@ const ProjectName = styled.h5`
   }
 `;
 const ProjectDescription = styled.div`
-  background-color: 'white';
+  background-color: ${colors.white};
   color: ${colors.navy};
   padding: 25px;
   border-radius: ${theme.borderRadius};
@@ -209,18 +209,14 @@ class Featured extends Component {
   }
 
   render() {
-    const { data } = this.props;
-    const featuredProjects = data.filter(({ node }) => node.frontmatter.show === 'true');
-
+    const { data: featuredProjects } = this.props;
     return (
       <FeaturedContainer id="projects">
         <Heading ref={el => (this.featured = el)}>Some Things I&apos;ve Built</Heading>
         <FeaturedGrid>
           {featuredProjects &&
             featuredProjects.map(({ node }, i) => {
-              const { frontmatter, html } = node;
-              const { external, title, tech, github, cover } = frontmatter;
-
+              const { external, title, tech, github, cover, html } = node;
               return (
                 <Project key={i} ref={el => (this.revealRefs[i] = el)}>
                   <ContentContainer>

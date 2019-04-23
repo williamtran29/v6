@@ -9,7 +9,7 @@ const { colors } = theme;
 
 const LoaderContainer = styled.div`
   ${mixins.flexCenter};
-  background-color: ${colors.darkNavy};
+  background-color: ${colors.white};
   position: fixed;
   width: 100%;
   height: 100%;
@@ -64,20 +64,20 @@ class Loader extends Component {
     loader
       .add({
         targets: '#logo path',
-        delay: 500,
-        duration: 2000,
+        delay: 100,
+        duration: 100,
         easing: 'easeInOutQuart',
         strokeDashoffset: [anime.setDashoffset, 0],
       })
       .add({
         targets: '#logo #B',
-        duration: 800,
+        duration: 200,
         easing: 'easeInOutQuart',
         opacity: 1,
       })
       .add({
         targets: '#logo',
-        delay: 700,
+        delay: 200,
         duration: 300,
         easing: 'easeInOutQuart',
         opacity: 0,

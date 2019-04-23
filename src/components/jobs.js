@@ -56,7 +56,8 @@ const Tab = styled.button`
   `};
   &:hover,
   &:focus {
-    background-color: ${colors.lightNavy};
+    background-color: ${colors.green};
+    color: ${colors.white};
   }
 `;
 const Highlighter = styled.span`
@@ -167,54 +168,55 @@ class Jobs extends Component {
   render() {
     const { activeTabId } = this.state;
     const { data } = this.props;
+    if (!data) {
+      return null;
+    }
     return (
       <JobsContainer id="jobs" ref={el => (this.jobs = el)}>
         <Heading>Where I&apos;ve Worked</Heading>
         <TabsContainer>
           <Tabs role="tablist">
-            {data &&
-              data.map(({ company }, i) => (
-                <Tab
-                  key={i}
-                  isActive={this.isActive(i)}
-                  onClick={e => this.setActiveTab(i, e)}
-                  role="tab"
-                  aria-selected={this.isActive(i) ? 'true' : 'false'}
-                  aria-controls={`tab${i}`}
-                  id={`tab${i}`}
-                  tabIndex={this.isActive(i) ? '0' : '-1'}>
-                  <span>{company}</span>
-                </Tab>
-              ))}
+            {data.map(({ node: { company } }, i) => (
+              <Tab
+                key={i}
+                isActive={this.isActive(i)}
+                onClick={e => this.setActiveTab(i, e)}
+                role="tab"
+                aria-selected={this.isActive(i) ? 'true' : 'false'}
+                aria-controls={`tab${i}`}
+                id={`tab${i}`}
+                tabIndex={this.isActive(i) ? '0' : '-1'}>
+                <span>{company}</span>
+              </Tab>
+            ))}
             <Highlighter activeTabId={activeTabId} />
           </Tabs>
           <ContentContainer>
-            {data &&
-              data.map(({ title, url, company, description, dateStart, dateEnd }, i) => (
-                <TabContent
-                  key={i}
-                  isActive={this.isActive(i)}
-                  id={`job${i}`}
-                  role="tabpanel"
-                  tabIndex="0"
-                  aria-labelledby={`job${i}`}
-                  aria-hidden={!this.isActive(i)}>
-                  <JobTitle>
-                    <span>{title}</span>
-                    <Company>
-                      &nbsp;@&nbsp;
-                      <a href={url} target="_blank" rel="nofollow noopener noreferrer">
-                        {company}
-                      </a>
-                    </Company>
-                  </JobTitle>
-                  <JobDetails>
-                    <span>{dateStart}</span>
-                    <span>{dateEnd}</span>
-                  </JobDetails>
-                  <ReactMarkdown source={description} />
-                </TabContent>
-              ))}
+            {data.map(({ node: { title, url, company, description, dateStart, dateEnd } }, i) => (
+              <TabContent
+                key={i}
+                isActive={this.isActive(i)}
+                id={`job${i}`}
+                role="tabpanel"
+                tabIndex="0"
+                aria-labelledby={`job${i}`}
+                aria-hidden={!this.isActive(i)}>
+                <JobTitle>
+                  <span>{title}</span>
+                  <Company>
+                    &nbsp;@&nbsp;
+                    <a href={url} target="_blank" rel="nofollow noopener noreferrer">
+                      {company}
+                    </a>
+                  </Company>
+                </JobTitle>
+                <JobDetails>
+                  <span>{dateStart}</span>
+                  <span>{dateEnd}</span>
+                </JobDetails>
+                <ReactMarkdown source={description} />
+              </TabContent>
+            ))}
           </ContentContainer>
         </TabsContainer>
       </JobsContainer>

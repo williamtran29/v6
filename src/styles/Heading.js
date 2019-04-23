@@ -6,13 +6,13 @@ const { colors, fontSizes, fonts } = theme;
 const Heading = styled.h3`
   position: relative;
   display: flex;
+  color: ${colors.green};
   align-items: center;
   margin: 10px 0 40px;
   width: 100%;
   white-space: nowrap;
   font-size: ${fontSizes.h3};
   ${media.tablet`font-size: 24px;`};
-
   &:before {
     counter-increment: section;
     content: '0' counter(section) '.';
@@ -31,7 +31,7 @@ const Heading = styled.h3`
     display: block;
     height: 1px;
     width: 300px;
-    background-color: ${colors.mediumGrey};
+    background-color: ${colors.green};
     position: relative;
     top: -5px;
     margin-left: 20px;

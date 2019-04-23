@@ -133,9 +133,8 @@ class Projects extends Component {
   render() {
     const GRID_LIMIT = 6;
     const { showMore } = this.state;
-    const { data } = this.props;
-    const projects = data.filter(({ node }) => node.frontmatter.show === 'true');
-    const firstSix = projects.slice(0, GRID_LIMIT);
+    const { data: projects } = this.props;
+    const firstSix = projects && projects.slice(0, GRID_LIMIT);
     const projectsToShow = showMore ? projects : firstSix;
 
     return (

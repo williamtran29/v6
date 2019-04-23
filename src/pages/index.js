@@ -23,14 +23,13 @@ const IndexPage = ({ data, location }) => (
     <MainContainer id="content">
       <Hero data={data.hero.edges} />
       <About data={data.about.edges} />
-      <Jobs data={data.jobs.jobs} />
-      <Featured data={data.featured.edges} />
-      <Projects data={data.projects.edges} />
+      <Jobs data={data.jobs.jobsConnection.edges} />
+      <Featured data={data.featured.featuresConnection.edges} />
+      <Projects data={data.projects.projectsConnection.edges} />
       <Contact data={data.contact.edges} />
     </MainContainer>
   </Layout>
 );
-
 IndexPage.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object,
@@ -72,59 +71,64 @@ export const query = graphql`
       }
     }
     jobs: graphCmsData {
-      jobs(where: { status: PUBLISHED }) {
-        title
-        company
-        companyLogo {
-          id
-          fileName
+      jobsConnection(where: { status: PUBLISHED }) {
+        edges {
+          node {
+            title
+            company
+            companyLogo {
+              id
+              fileName
+            }
+            location
+            description
+            dateStart
+            dateEnd
+            url
+          }
         }
-        location
-        description
-        dateStart
-        dateEnd
-        url
       }
     }
-    featured: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/featured/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          frontmatter {
+    featured: graphCmsData {
+      featuresConnection(where: { status: PUBLISHED }) {
+        edges {
+          node {
             title
             cover {
-              childImageSharp {
-                fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#64ffda" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
-              }
+              id
+              fileName
             }
-            tech
-            github
-            external
+            tech {
+              html
+              markdown
+              raw
+              text
+            }
+            description
+            url
             show
           }
-          html
         }
       }
     }
-    projects: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/projects/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          frontmatter {
+    projects: graphCmsData {
+      projectsConnection(where: { status: PUBLISHED }) {
+        edges {
+          node {
             title
-            image
-            tech
-            github
-            external
-            show
+            image {
+              id
+              fileName
+            }
+            tech {
+              html
+              markdown
+              raw
+              text
+            }
+            description
+            url
           }
-          html
         }
       }
     }
