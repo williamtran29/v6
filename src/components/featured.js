@@ -6,7 +6,6 @@ import { srConfig } from '@config';
 import { IconGithub, IconExternal } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading } from '@styles';
-import ReactMarkdown from 'react-markdown';
 const { colors, fontSizes, fonts } = theme;
 
 const FeaturedContainer = styled(Section)`
@@ -217,7 +216,7 @@ class Featured extends Component {
         <FeaturedGrid>
           {featuredProjects &&
             featuredProjects.map(({ node }, i) => {
-              const { url, title, tech, github, cover, description } = node;
+              const { url, title, github, description } = node;
               return (
                 <Project key={i} ref={el => (this.revealRefs[i] = el)}>
                   <ContentContainer>
@@ -236,7 +235,6 @@ class Featured extends Component {
                       )}
                     </ProjectName>
                     <ProjectDescription dangerouslySetInnerHTML={{ __html: description }} />
-                    <ReactMarkdown source={tech.markdown} />
                     <Links>
                       {github && (
                         <a
@@ -258,10 +256,6 @@ class Featured extends Component {
                       )}
                     </Links>
                   </ContentContainer>
-
-                  <ImgContainer>
-                    <FeaturedImg fluid={cover.url} />
-                  </ImgContainer>
                 </Project>
               );
             })}
