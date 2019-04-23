@@ -13,6 +13,7 @@ skills:
   - Python
   - Scrapy
   - Golang
+  - Elixir/Phoenix
 ---
 
 I'm Chi - a Technical Architect who is very strong in software development with 9 years experience. If you want to get perfect quality result for your products, I will be a good fit for you.

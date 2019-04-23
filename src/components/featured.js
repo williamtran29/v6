@@ -6,6 +6,7 @@ import { srConfig } from '@config';
 import { IconGithub, IconExternal } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading } from '@styles';
+import ReactMarkdown from 'react-markdown';
 const { colors, fontSizes, fonts } = theme;
 
 const FeaturedContainer = styled(Section)`
@@ -216,15 +217,15 @@ class Featured extends Component {
         <FeaturedGrid>
           {featuredProjects &&
             featuredProjects.map(({ node }, i) => {
-              const { external, title, tech, github, cover, html } = node;
+              const { url, title, tech, github, cover, description } = node;
               return (
                 <Project key={i} ref={el => (this.revealRefs[i] = el)}>
                   <ContentContainer>
                     <FeaturedLabel>Featured Project</FeaturedLabel>
                     <ProjectName>
-                      {external ? (
+                      {url ? (
                         <a
-                          href={external}
+                          href={url}
                           target="_blank"
                           rel="nofollow noopener noreferrer"
                           aria-label="External Link">
@@ -234,14 +235,8 @@ class Featured extends Component {
                         title
                       )}
                     </ProjectName>
-                    <ProjectDescription dangerouslySetInnerHTML={{ __html: html }} />
-                    {tech && (
-                      <TechList>
-                        {tech.map((tech, i) => (
-                          <li key={i}>{tech}</li>
-                        ))}
-                      </TechList>
-                    )}
+                    <ProjectDescription dangerouslySetInnerHTML={{ __html: description }} />
+                    <ReactMarkdown source={tech.markdown} />
                     <Links>
                       {github && (
                         <a
@@ -252,9 +247,9 @@ class Featured extends Component {
                           <IconGithub />
                         </a>
                       )}
-                      {external && (
+                      {url && (
                         <a
-                          href={external}
+                          href={url}
                           target="_blank"
                           rel="nofollow noopener noreferrer"
                           aria-label="External Link">
@@ -265,7 +260,7 @@ class Featured extends Component {
                   </ContentContainer>
 
                   <ImgContainer>
-                    <FeaturedImg fluid={cover.childImageSharp.fluid} />
+                    <FeaturedImg fluid={cover.url} />
                   </ImgContainer>
                 </Project>
               );

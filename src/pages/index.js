@@ -79,6 +79,7 @@ export const query = graphql`
             companyLogo {
               id
               fileName
+              url
             }
             location
             description
@@ -97,6 +98,7 @@ export const query = graphql`
             cover {
               id
               fileName
+              url
             }
             tech {
               html
@@ -119,6 +121,7 @@ export const query = graphql`
             image {
               id
               fileName
+              url
             }
             tech {
               html
