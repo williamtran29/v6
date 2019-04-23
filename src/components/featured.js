@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import Img from 'graphcms-image';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { IconGithub, IconExternal } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading } from '@styles';
+import ReactMarkdown from 'react-markdown';
 const { colors, fontSizes, fonts } = theme;
 
 const FeaturedContainer = styled(Section)`
@@ -46,8 +47,8 @@ const ProjectName = styled.h5`
   }
 `;
 const ProjectDescription = styled.div`
-  background-color: ${colors.white};
-  color: ${colors.navy};
+  background-color: ${colors.green};
+  color: ${colors.white};
   padding: 25px;
   border-radius: ${theme.borderRadius};
   font-size: ${fontSizes.large};
@@ -216,7 +217,7 @@ class Featured extends Component {
         <FeaturedGrid>
           {featuredProjects &&
             featuredProjects.map(({ node }, i) => {
-              const { url, title, github, description } = node;
+              const { url, title, github, description, cover } = node;
               return (
                 <Project key={i} ref={el => (this.revealRefs[i] = el)}>
                   <ContentContainer>
@@ -234,7 +235,9 @@ class Featured extends Component {
                         title
                       )}
                     </ProjectName>
-                    <ProjectDescription dangerouslySetInnerHTML={{ __html: description }} />
+                    <ProjectDescription>
+                      <ReactMarkdown source={description} />
+                    </ProjectDescription>
                     <Links>
                       {github && (
                         <a
@@ -256,6 +259,9 @@ class Featured extends Component {
                       )}
                     </Links>
                   </ContentContainer>
+                  <ImgContainer>
+                    <FeaturedImg image={cover} />
+                  </ImgContainer>
                 </Project>
               );
             })}

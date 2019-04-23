@@ -96,9 +96,9 @@ export const query = graphql`
           node {
             title
             cover {
-              id
-              fileName
-              url
+              handle
+              width
+              height
             }
             tech {
               html
