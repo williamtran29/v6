@@ -5,7 +5,7 @@ import { srConfig } from '@config';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading } from '@styles';
 import ReactMarkdown from 'react-markdown';
-
+import Moment from 'moment';
 const { colors, fontSizes, fonts } = theme;
 
 const JobsContainer = styled(Section)`
@@ -56,7 +56,7 @@ const Tab = styled.button`
   `};
   &:hover,
   &:focus {
-    background-color: ${colors.green};
+    background-color: ${colors.darkGrey};
     color: ${colors.white};
   }
 `;
@@ -69,6 +69,7 @@ const Highlighter = styled.span`
   position: absolute;
   top: 0;
   left: 0;
+  outline: none;
   transition: ${theme.transition};
   transition-delay: 0.1s;
   z-index: 10;
@@ -97,6 +98,7 @@ const ContentContainer = styled.div`
 const TabContent = styled.div`
   top: 0;
   left: 0;
+  outline: none;
   width: 100%;
   height: auto;
   opacity: ${props => (props.isActive ? 1 : 0)};
@@ -211,8 +213,8 @@ class Jobs extends Component {
                   </Company>
                 </JobTitle>
                 <JobDetails>
-                  <span>{dateStart}</span>
-                  <span>{dateEnd}</span>
+                  <span>{dateStart && Moment(dateStart).format('MMM Do YYYY')}</span>
+                  <span>{dateEnd && ` - ${Moment(dateEnd).format('MMM Do YYYY')}`}</span>
                 </JobDetails>
                 <ReactMarkdown source={description} />
               </TabContent>
