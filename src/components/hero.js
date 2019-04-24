@@ -29,6 +29,7 @@ const Name = styled.h2`
   font-size: 80px;
   line-height: 1.1;
   margin: 0;
+  color: ${colors.green};
   ${media.desktop`font-size: 70px;`};
   ${media.tablet`font-size: 60px;`};
   ${media.phablet`font-size: 50px;`};
