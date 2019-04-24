@@ -191,7 +191,7 @@ class Projects extends Component {
                             </Links>
                           </ProjectHeader>
                           <ProjectName>
-                            {external ? (
+                            {url ? (
                               <a
                                 href={url}
                                 target="_blank"
