@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
+import ReactMarkdown from 'react-markdown';
 import { IconGithub, IconExternal, IconFolder } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Button } from '@styles';
@@ -16,6 +17,7 @@ const ProjectsContainer = styled(Section)`
 const ProjectsTitle = styled.h4`
   margin: 0 auto 50px;
   font-size: ${fontSizes.h3};
+  color: ${colors.green};
   ${media.tablet`font-size: 24px;`};
   a {
     display: block;
@@ -40,6 +42,7 @@ const ProjectInner = styled.div`
   border-radius: ${theme.borderRadius};
   transition: ${theme.transition};
   background-color: ${colors.lightNavy};
+  color: ${colors.white};
 `;
 const Project = styled.div`
   transition: ${theme.transition};
@@ -48,8 +51,8 @@ const Project = styled.div`
     outline: 0;
     ${ProjectInner} {
       transform: translateY(-5px);
-      box-shadow: 0 2px 4px ${colors.shadowNavy};
-      box-shadow: 0 19px 38px ${colors.darkestNavy} 0 15px 12px ${colors.shadowNavy};
+      box-shadow: 0 2px 4px ${colors.white};
+      box-shadow: 0 19px 38px ${colors.darkestNavy} 0 15px 12px ${colors.white};
     }
   }
 `;
@@ -79,28 +82,30 @@ const IconLink = styled.a`
 const ProjectName = styled.h5`
   margin: 0 0 10px;
   font-size: ${fontSizes.xxlarge};
-  color: ${colors.lightestSlate};
+  color: ${colors.white};
 `;
-const ProjectDescription = styled.div`
-  font-size: 17px;
-  a {
-    ${mixins.inlineLink};
-  }
-`;
-const TechList = styled.ul`
-  flex-grow: 1;
-  display: flex;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  li {
-    font-family: ${fonts.SFMono};
-    font-size: ${fontSizes.xsmall};
-    color: ${colors.lightSlate};
-    line-height: 1.75;
-    margin-right: 15px;
-    &:last-of-type {
-      margin-right: 0;
+// const ProjectDescription = styled.div`
+// font-size: 17px;
+// a {
+// ${mixins.inlineLink};
+// }
+// `;
+const TechList = styled.div`
+  ul {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    li {
+      font-family: ${fonts.SFMono};
+      font-size: ${fontSizes.xsmall};
+      color: ${colors.lightSlate};
+      line-height: 1.75;
+      margin-right: 15px;
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
   }
 `;
@@ -144,8 +149,7 @@ class Projects extends Component {
           <TransitionGroup className="projects">
             {projectsToShow &&
               projectsToShow.map(({ node }, i) => {
-                const { frontmatter, html } = node;
-                const { github, external, title, tech } = frontmatter;
+                const { title, url, tech, description, github } = node;
                 return (
                   <CSSTransition
                     key={i}
@@ -175,9 +179,9 @@ class Projects extends Component {
                                   <IconGithub />
                                 </IconLink>
                               )}
-                              {external && (
+                              {url && (
                                 <IconLink
-                                  href={external}
+                                  href={url}
                                   target="_blank"
                                   rel="nofollow noopener noreferrer"
                                   aria-label="External Link">
@@ -189,7 +193,7 @@ class Projects extends Component {
                           <ProjectName>
                             {external ? (
                               <a
-                                href={external}
+                                href={url}
                                 target="_blank"
                                 rel="nofollow noopener noreferrer"
                                 aria-label="Visit Website">
@@ -199,14 +203,10 @@ class Projects extends Component {
                               title
                             )}
                           </ProjectName>
-                          <ProjectDescription dangerouslySetInnerHTML={{ __html: html }} />
+                          <ReactMarkdown source={description} />
                         </div>
                         <div>
-                          <TechList>
-                            {tech.map((tech, i) => (
-                              <li key={i}>{tech}</li>
-                            ))}
-                          </TechList>
+                          <TechList dangerouslySetInnerHTML={{ __html: tech.html }} />
                         </div>
                       </ProjectInner>
                     </Project>

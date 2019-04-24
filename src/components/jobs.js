@@ -52,7 +52,7 @@ const Tab = styled.button`
     text-align: center;
     border-left: 0;
     border-bottom: 2px solid ${colors.darkGrey};
-    min-width: 120px;
+    min-width: 150px;
   `};
   &:hover,
   &:focus {
@@ -77,14 +77,7 @@ const Highlighter = styled.span`
     ${props => (props.activeTabId > 0 ? props.activeTabId * theme.tabHeight : 0)}px
   );
   ${media.thone`
-    width: 100%;
-    max-width: ${theme.tabWidth}px;
-    height: 2px;
-    top: auto;
-    bottom: 0;
-    transform: translateX(
-      ${props => (props.activeTabId > 0 ? props.activeTabId * theme.tabWidth : 0)}px
-    );
+    background: transparent;
   `};
 `;
 const ContentContainer = styled.div`
